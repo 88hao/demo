@@ -1,0 +1,25 @@
+package com.example.demo.controller;
+
+import com.example.demo.dao.UserDao;
+import com.example.demo.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("user")
+@CrossOrigin
+public class UserController {
+    @Autowired
+    private UserDao userDao;
+
+    @GetMapping("getuser")
+    public Iterable<User>  getUser(){
+        //Iterable<T> findAll();
+        return userDao.findAll();
+    }
+}
